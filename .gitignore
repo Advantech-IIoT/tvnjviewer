@@ -1,0 +1,8 @@
+output/
+dist/
+_obj/
+.vscode/
+.idea/
+.gradle/
+images/
+build*/
