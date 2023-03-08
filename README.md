@@ -1,38 +1,40 @@
-# Project Setups
+# tightvnc
+
+## Document
+[Document](https://www.tightvnc.com/docs.php)  
+[Java Viewer Help (TXT)](https://www.tightvnc.com/doc/java/README.txt)  
+
+## Source
+* The tightvnc jar in bin is build result
+
+ref: [Download TightVNC Java Viewer Source](https://www.tightvnc.com/download/2.8.3/tvnjviewer-2.8.3-src-gnugpl.zip)
+
+
+* The JRE tar.gz in bin is downloaded from [AdoptOpenJDK](https://adoptium.net/)
+
+ref: [Download JRE](https://adoptium.net/temurin/releases/)
+
+## Project Setups
 * install [Java SDK 8](https://adoptium.net/temurin/releases/)
 
-## Build
+### Build
 On Windows
 ```
 .\gradlew.bat
 ```
 
-Using TightVNC Java Viewer
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-TightVNC Java Viewer can work either as a normal application or as
-an applet. To run it as an application, just execute the JAR file
-(tightvnc-jviewer.jar), e.g. double-click it in the Windows Explorer.
-If Java Runtime is installed on your computer correctly, that should
-be enough. You will be prompted for the TightVNC Server to connect to.
+# JDK Comparison
+* AdoptOpenJDK - https://adoptopenjdk.net
+* Amazon – Corretto - https://aws.amazon.com/corretto
+* RedHat - https://developers.redhat.com/products/openjdk/overview
 
-If you would like to start the viewer from the command line, here are
-a few examples:
+|  Criteria   | Oracle JDK  |  Red Hat OpenJDK   | Amazon Coretto  | AdoptOpenJDK  |
+|  ----  | ----  |  ----  | ----  | ----  |
+| Free / Commercial basis  | Need to purchase licenses. |  JDK is free  |  JDK is free |  JDK is free |
+| Long-term support (LTS) options  | + Java 8 till March 2022 (Premier support) and March 2025 (Extended support) | + LTS of Red Hat OpenJDK 8 till June 2023  | + Java 8 support till June 2023 | + Java 8 support till September 2023 |
+|  Platform aarch64|  O|  X|  O|  O|
+|  aarch64 Package Type|  JRE/JDK|  -|  JDK|  JRE/JDK|
 
-  java -jar tightvnc-jviewer.jar
-  java -jar tightvnc-jviewer.jar hostname
-  java -jar tightvnc-jviewer.jar -port=nnn hostname
-  java -jar tightvnc-jviewer.jar -port=nnn -host=hostname
-
-... where hostname and nnn should be replaced with the actual hostname
-and port number correspondingly. Note that you can use an IP address
-as a hostname. Port 5900 will be used if not specified.
-
-Important: the syntax like hostname:display or hostname::port is not
-           supported in this version of TightVNC Java Viewer.
-
-For more command line params info run:
-
-  java -jar tightvnc-jviewer.jar -help
-
-Finally, if you would like to use the viewer as an applet, please see
-the example HTML page included (viewer-applet-example.html).
+ps. JRE (Java Runtime Environment) is smaller than JDK (Java Development Kit).
+The JRE is a set of components to create and run a Java application.  
+The JDK includes tools for developing and testing programs written in the Java programming language and running on the Java platform. 
