@@ -47,6 +47,7 @@ public class ParametersHandler {
 	public static final String ARG_SHARE_DESKTOP = "ShareDesktop";
 	public static final String ARG_ALLOW_COPY_RECT = "AllowCopyRect";
 	public static final String ARG_VIEW_ONLY = "ViewOnly";
+    public static final String ARG_FIT_WINDOW = "FitWindow";
 	public static final String ARG_SHOW_CONTROLS = "ShowControls";
 	public static final String ARG_OPEN_NEW_WINDOW = "OpenNewWindow";
 	public static final String ARG_PASSWORD = "password";
@@ -283,6 +284,7 @@ public class ParametersHandler {
         int uiMask = 0;
         String scaleFactorParam = pr.getParamByName(ARG_SCALING_FACTOR);
         String fullScreenParam = pr.getParamByName(ARG_FULL_SCREEN);
+        String fitWindowParam = pr.getParamByName(ARG_FIT_WINDOW);
         uiSettings.showControls = parseBooleanOrDefault(pr.getParamByName(ARG_SHOW_CONTROLS), true);
         uiSettings.showConnectionDialog = parseBooleanOrDefault(pr.getParamByName(ARG_SHOW_CONNECTION_DIALOG), true);
         if (scaleFactorParam != null) {
@@ -296,6 +298,8 @@ public class ParametersHandler {
 		}
         uiSettings.setFullScreen(parseBooleanOrDefault(fullScreenParam, false));
         if (isGiven(fullScreenParam)) uiMask |= UiSettings.CHANGED_FULL_SCREEN;
+        uiSettings.setFitWindow(parseBooleanOrDefault(fitWindowParam, false));
+        if (isGiven(fitWindowParam)) uiMask |= UiSettings.CHANGED_FIT_WINDOW;
         return uiMask;
     }
 

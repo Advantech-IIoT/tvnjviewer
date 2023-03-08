@@ -106,6 +106,9 @@ public class SwingViewerWindow implements IChangeSettingsListener, MouseEnteredL
             switchOnFullscreenMode();
         }
         setSurfaceToHandleKbdFocus();
+		if (uiSettings.isFitWindow()) {
+			zoomFitButton.doClick();
+		}
 	}
 
     private void createContainer(final Surface surface, Container externalContainer) {

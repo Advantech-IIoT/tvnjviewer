@@ -44,6 +44,7 @@ public class UiSettings {
     public static final int CHANGED_SCALE_FACTOR = 1 << 0;
     public static final int CHANGED_MOUSE_CURSOR_SHAPE = 1 << 1;
     public static final int CHANGED_FULL_SCREEN = 1 << 2;
+	public static final int CHANGED_FIT_WINDOW  = 1 << 3;
 
     private final List<IChangeSettingsListener> listeners = new CopyOnWriteArrayList<IChangeSettingsListener>();
     private int changedSettingsMask = 0;
@@ -59,7 +60,7 @@ public class UiSettings {
 
 	public UiSettings(UiSettings uiSettings) {
         uiSettingsData = new UiSettingsData(
-                uiSettings.getScalePercent(), uiSettings.getMouseCursorShape(), uiSettings.isFullScreen());
+                uiSettings.getScalePercent(), uiSettings.getMouseCursorShape(), uiSettings.isFullScreen(), uiSettings.isFitWindow());
         this.changedSettingsMask = uiSettings.changedSettingsMask;
     }
 
@@ -160,6 +161,7 @@ public class UiSettings {
         if ((mask & CHANGED_SCALE_FACTOR) == 0) uiSettingsData.setScalePercent(other.getScalePercent());
         if ((mask & CHANGED_MOUSE_CURSOR_SHAPE) == 0) uiSettingsData.setMouseCursorShape(other.getMouseCursorShape());
         if ((mask & CHANGED_FULL_SCREEN) == 0) uiSettingsData.setFullScreen(other.isFullScreen());
+		if ((mask & CHANGED_FIT_WINDOW) == 0) uiSettingsData.setFitWindow(other.isFitWindow());
     }
 
     public void setFullScreen(boolean isFullScreen) {
@@ -173,6 +175,17 @@ public class UiSettings {
         return uiSettingsData.isFullScreen();
     }
 
+	public void setFitWindow(boolean isFitWindow) {
+		if (uiSettingsData.setFitWindow(isFitWindow)) {
+			changedSettingsMask |= CHANGED_FIT_WINDOW;
+			fireListeners();
+		}
+	}
+
+	public boolean isFitWindow() {
+		return uiSettingsData.isFitWindow();
+	}
+
     public UiSettingsData getData() {
         return uiSettingsData;
     }
@@ -182,6 +195,7 @@ public class UiSettings {
         return "UiSettings{" +
                 "scalePercent=" + uiSettingsData.getScalePercent() +
                 ", fullScreen=" + uiSettingsData.isFullScreen() +
+				", fitWindow=" + uiSettingsData.isFitWindow() +
                 ", mouseCursorShape=" + uiSettingsData.getMouseCursorShape() +
                 '}';
     }

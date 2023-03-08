@@ -33,22 +33,25 @@ public class UiSettingsData implements Serializable {
     private double scalePercent;
     private LocalMouseCursorShape mouseCursorShape;
     private boolean fullScreen;
+    private boolean fitWindow;
 
 
     public UiSettingsData() {
         scalePercent = 100;
         mouseCursorShape = LocalMouseCursorShape.DOT;
         fullScreen = false;
+        fitWindow = false;
     }
 
-    public UiSettingsData(double scalePercent, LocalMouseCursorShape mouseCursorShape, boolean fullScreen) {
+    public UiSettingsData(double scalePercent, LocalMouseCursorShape mouseCursorShape, boolean fullScreen, boolean fitWindow) {
         this.scalePercent = scalePercent;
         this.mouseCursorShape = mouseCursorShape;
         this.fullScreen = fullScreen;
+        this.fitWindow = fitWindow;
     }
 
     public UiSettingsData(UiSettingsData other) {
-        this(other.getScalePercent(), other.getMouseCursorShape(), other.isFullScreen());
+        this(other.getScalePercent(), other.getMouseCursorShape(), other.isFullScreen(), other.isFitWindow());
     }
 
     public double getScalePercent() {
@@ -88,12 +91,25 @@ public class UiSettingsData implements Serializable {
         return false;
     }
 
+    public boolean isFitWindow() {
+        return fitWindow;
+    }
+
+    public boolean setFitWindow(boolean fitWindow) {
+        if (this.fitWindow != fitWindow) {
+            this.fitWindow = fitWindow;
+            return true;
+        }
+        return false;
+    }
+
     @Override
     public String toString() {
         return "UiSettingsData{" +
                 "scalePercent=" + scalePercent +
                 ", mouseCursorShape=" + mouseCursorShape +
                 ", fullScreen=" + fullScreen +
+                ", fitWindow=" + fitWindow +
                 '}';
     }
 }
