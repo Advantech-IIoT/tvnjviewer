@@ -5,7 +5,7 @@ BIN_PATH=$(CURDIR)/bin
 RES_PATH=$(CURDIR)/res
 TOOLS_PATH=$(CURDIR)/tools
 TIGHTVNC_JAR=$(BIN_PATH)/tightvnc-jviewer_v2.8.3.jar
-JDK_TAR=$(BIN_PATH)/jre-8u352-b08-linux-aarch64.tar.gz
+JDK_TAR=$(BIN_PATH)/jre-8u362-b09-linux-aarch64.tar.gz
 DESTINATION_PATH=$(CURRENT_PATH)
 
 install:
