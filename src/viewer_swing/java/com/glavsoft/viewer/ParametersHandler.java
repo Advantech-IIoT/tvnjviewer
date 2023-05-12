@@ -110,6 +110,7 @@ public class ParametersHandler {
 				"The value is interpreted as scaling factor in percents. The default value of 100% " +
 				"corresponds to the original framebuffer size.");
         parser.addOption(ARG_FULL_SCREEN, null, "Full screen mode. Possible values: yes/true and no/false. Default: no.");
+        parser.addOption(ARG_FIT_WINDOW, null, "Fit window mode. Possible values: yes/true and no/false. Default: no.");
 		parser.addOption(ARG_SSH_HOST, "", "SSH host name.");
 		parser.addOption(ARG_SSH_PORT, "0",
 				"SSH port number. When empty, standard SSH port number (" + ConnectionParams.DEFAULT_SSH_PORT + ") is used.");
