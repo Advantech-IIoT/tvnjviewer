@@ -1,3 +1,3 @@
 #!/bin/bash
-export JAVA_HOME=/usr/java/jdk8u362-b09-jre
+export JAVA_HOME=/usr/java/jdk8u382-b05-jre
 export PATH=$JAVA_HOME/bin:$PATH
