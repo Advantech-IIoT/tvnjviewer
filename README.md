@@ -31,7 +31,7 @@ On Windows
 |  Criteria   | Oracle JDK  |  Red Hat OpenJDK   | Amazon Coretto  | AdoptOpenJDK  |
 |  ----  | ----  |  ----  | ----  | ----  |
 | Free / Commercial basis  | Need to purchase licenses. |  JDK is free  |  JDK is free |  JDK is free |
-| Long-term support (LTS) options  | + Java 8 till March 2022 (Premier support) and March 2025 (Extended support) | + LTS of Red Hat OpenJDK 8 till June 2023  | + Java 8 support till June 2023 | + Java 8 support till September 2023 |
+| Long-term support (LTS) options  | + Java 8 till December 2030 (Extended support) | + LTS of Red Hat OpenJDK 8 till Nov 2026*  | + Java 8 support till July 2026 | + Java 8 support till Nov 2026 |
 |  Platform aarch64|  O|  X|  O|  O|
 |  aarch64 Package Type|  JRE/JDK|  -|  JDK|  JRE/JDK|
 
