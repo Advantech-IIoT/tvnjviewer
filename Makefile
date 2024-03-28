@@ -17,6 +17,10 @@ install:
 	cp ${TOOLS_PATH}/vnc-env.sh $(DESTINATION_PATH)/etc/profile.d/
 	cp ${RES_PATH}/tightvnc_icon.png $(DESTINATION_PATH)/usr/share/icons/hicolor/24x24/apps/
 	tar zxf $(JDK_TAR) -C $(DESTINATION_PATH)/usr/java/
+	mkdir -p $(DESTINATION_PATH)/usr/share/common-licenses/vncviewer
+	mkdir -p $(DESTINATION_PATH)/usr/share/common-licenses/java
+	cp ${CURRENT_PATH}/LICENSE.txt $(DESTINATION_PATH)/usr/share/common-licenses/vncviewer
+	cp $(DESTINATION_PATH)/usr/java/jdk8u392-b08-jre/LICENSE $(DESTINATION_PATH)/usr/share/common-licenses/java
 
 create-sbom: clean-sbom
 	cd bin && sbom-tool generate -b . -bc . -pn tightvnc-jviewer -pv $(VERSION) -ps Advantech -nsb "https://github.com/Advantech-IIoT"
