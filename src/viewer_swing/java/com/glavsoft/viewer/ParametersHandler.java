@@ -113,7 +113,7 @@ public class ParametersHandler {
 				"corresponds to the original framebuffer size.");
         parser.addOption(ARG_FULL_SCREEN, null, "Full screen mode. Possible values: yes/true and no/false. Default: no.");
         parser.addOption(ARG_FIT_WINDOW, null, "Fit window mode. Possible values: yes/true and no/false. Default: no.");
-        parser.addOption(ARG_VIEWPORT_BACKGROUND_COLOR, null, "Viewport background color. Default: dark_gray.");
+        parser.addOption(ARG_VIEWPORT_BACKGROUND_COLOR, null, "Viewport background color. Color hex code: 0x000000(black) 0xffffff(white) Default: dark_gray.");
 		parser.addOption(ARG_SSH_HOST, "", "SSH host name.");
 		parser.addOption(ARG_SSH_PORT, "0",
 				"SSH port number. When empty, standard SSH port number (" + ConnectionParams.DEFAULT_SSH_PORT + ") is used.");
