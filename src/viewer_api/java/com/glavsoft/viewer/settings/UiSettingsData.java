@@ -1,3 +1,4 @@
+// Copyright (C) 2023-2024 The Advantech Company Ltd. All Rights Reserved.
 // Copyright (C) 2010 - 2014 GlavSoft LLC.
 // All rights reserved.
 //
@@ -34,6 +35,7 @@ public class UiSettingsData implements Serializable {
     private LocalMouseCursorShape mouseCursorShape;
     private boolean fullScreen;
     private boolean fitWindow;
+    private String viewportBackgroundColor;
 
 
     public UiSettingsData() {
@@ -41,17 +43,19 @@ public class UiSettingsData implements Serializable {
         mouseCursorShape = LocalMouseCursorShape.DOT;
         fullScreen = false;
         fitWindow = false;
+        viewportBackgroundColor = "DARK_GRAY";
     }
 
-    public UiSettingsData(double scalePercent, LocalMouseCursorShape mouseCursorShape, boolean fullScreen, boolean fitWindow) {
+    public UiSettingsData(double scalePercent, LocalMouseCursorShape mouseCursorShape, boolean fullScreen, boolean fitWindow, String viewportBackgroundColor) {
         this.scalePercent = scalePercent;
         this.mouseCursorShape = mouseCursorShape;
         this.fullScreen = fullScreen;
         this.fitWindow = fitWindow;
+        this.viewportBackgroundColor = viewportBackgroundColor;
     }
 
     public UiSettingsData(UiSettingsData other) {
-        this(other.getScalePercent(), other.getMouseCursorShape(), other.isFullScreen(), other.isFitWindow());
+        this(other.getScalePercent(), other.getMouseCursorShape(), other.isFullScreen(), other.isFitWindow(), other.getViewportBackgroundColor());
     }
 
     public double getScalePercent() {
@@ -103,6 +107,18 @@ public class UiSettingsData implements Serializable {
         return false;
     }
 
+    public String getViewportBackgroundColor() {
+        return viewportBackgroundColor;
+    }
+
+    public boolean setViewportBackgroundColor(String viewportBackgroundColor) {
+        if (this.viewportBackgroundColor != viewportBackgroundColor && viewportBackgroundColor != null) {
+            this.viewportBackgroundColor = viewportBackgroundColor;
+            return true;
+        }
+        return false;
+    }
+
     @Override
     public String toString() {
         return "UiSettingsData{" +
@@ -110,6 +126,7 @@ public class UiSettingsData implements Serializable {
                 ", mouseCursorShape=" + mouseCursorShape +
                 ", fullScreen=" + fullScreen +
                 ", fitWindow=" + fitWindow +
+                ", viewportBackgroundColor=" + viewportBackgroundColor +
                 '}';
     }
 }

@@ -1,3 +1,4 @@
+// Copyright (C) 2023-2024 The Advantech Company Ltd. All Rights Reserved.
 // Copyright (C) 2010 - 2014 GlavSoft LLC.
 // All rights reserved.
 //
@@ -49,6 +50,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
+import java.lang.reflect.Field;
 
 public class SwingViewerWindow implements IChangeSettingsListener, MouseEnteredListener {
 	public static final int FS_SCROLLING_ACTIVE_BORDER = 20;
@@ -125,8 +127,18 @@ public class SwingViewerWindow implements IChangeSettingsListener, MouseEnteredL
 		lpane.setPreferredSize(surface.getPreferredSize());
         lpane.add(surface, JLayeredPane.DEFAULT_LAYER, 0);
         scroller = new JScrollPane();
-        scroller.getViewport().setBackground(Color.DARK_GRAY);
-        scroller.setViewportView(lpane);
+		// get viewport background color from string
+		Color viewportBackgroundColor;
+		try {
+			Field field = Class.forName("java.awt.Color").getField(uiSettings.getViewportBackgroundColor());
+			viewportBackgroundColor = (Color)field.get(null);
+			
+		} catch (Exception e) {
+			viewportBackgroundColor = Color.DARK_GRAY;
+		}
+		// set viewport background color
+		scroller.getViewport().setBackground(viewportBackgroundColor);
+		scroller.setViewportView(lpane);
 
 		if (isSeparateFrame) {
 			frame = new JFrame();

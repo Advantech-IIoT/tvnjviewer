@@ -1,3 +1,4 @@
+// Copyright (C) 2023-2024 The Advantech Company Ltd. All Rights Reserved.
 // Copyright (C) 2010 - 2014 GlavSoft LLC.
 // All rights reserved.
 //
@@ -48,6 +49,7 @@ public class ParametersHandler {
 	public static final String ARG_ALLOW_COPY_RECT = "AllowCopyRect";
 	public static final String ARG_VIEW_ONLY = "ViewOnly";
     public static final String ARG_FIT_WINDOW = "FitWindow";
+    public static final String ARG_VIEWPORT_BACKGROUND_COLOR = "ViewportBackgroundColor";
 	public static final String ARG_SHOW_CONTROLS = "ShowControls";
 	public static final String ARG_OPEN_NEW_WINDOW = "OpenNewWindow";
 	public static final String ARG_PASSWORD = "password";
@@ -111,6 +113,7 @@ public class ParametersHandler {
 				"corresponds to the original framebuffer size.");
         parser.addOption(ARG_FULL_SCREEN, null, "Full screen mode. Possible values: yes/true and no/false. Default: no.");
         parser.addOption(ARG_FIT_WINDOW, null, "Fit window mode. Possible values: yes/true and no/false. Default: no.");
+        parser.addOption(ARG_VIEWPORT_BACKGROUND_COLOR, null, "Viewport background color. Default: dark_gray.");
 		parser.addOption(ARG_SSH_HOST, "", "SSH host name.");
 		parser.addOption(ARG_SSH_PORT, "0",
 				"SSH port number. When empty, standard SSH port number (" + ConnectionParams.DEFAULT_SSH_PORT + ") is used.");
@@ -286,6 +289,7 @@ public class ParametersHandler {
         String scaleFactorParam = pr.getParamByName(ARG_SCALING_FACTOR);
         String fullScreenParam = pr.getParamByName(ARG_FULL_SCREEN);
         String fitWindowParam = pr.getParamByName(ARG_FIT_WINDOW);
+        String viewportBGColorParam = pr.getParamByName(ARG_VIEWPORT_BACKGROUND_COLOR);
         uiSettings.showControls = parseBooleanOrDefault(pr.getParamByName(ARG_SHOW_CONTROLS), true);
         uiSettings.showConnectionDialog = parseBooleanOrDefault(pr.getParamByName(ARG_SHOW_CONNECTION_DIALOG), true);
         if (scaleFactorParam != null) {
@@ -301,6 +305,7 @@ public class ParametersHandler {
         if (isGiven(fullScreenParam)) uiMask |= UiSettings.CHANGED_FULL_SCREEN;
         uiSettings.setFitWindow(parseBooleanOrDefault(fitWindowParam, false));
         if (isGiven(fitWindowParam)) uiMask |= UiSettings.CHANGED_FIT_WINDOW;
+        uiSettings.setViewportBackgroundColor(viewportBGColorParam);
         return uiMask;
     }
 

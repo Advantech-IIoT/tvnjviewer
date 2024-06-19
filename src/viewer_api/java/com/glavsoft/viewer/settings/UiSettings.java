@@ -1,3 +1,4 @@
+// Copyright (C) 2023-2024 The Advantech Company Ltd. All Rights Reserved.
 // Copyright (C) 2010 - 2014 GlavSoft LLC.
 // All rights reserved.
 //
@@ -60,7 +61,8 @@ public class UiSettings {
 
 	public UiSettings(UiSettings uiSettings) {
         uiSettingsData = new UiSettingsData(
-                uiSettings.getScalePercent(), uiSettings.getMouseCursorShape(), uiSettings.isFullScreen(), uiSettings.isFitWindow());
+                uiSettings.getScalePercent(), uiSettings.getMouseCursorShape(), uiSettings.isFullScreen(), 
+				uiSettings.isFitWindow(), uiSettings.getViewportBackgroundColor());
         this.changedSettingsMask = uiSettings.changedSettingsMask;
     }
 
@@ -162,6 +164,7 @@ public class UiSettings {
         if ((mask & CHANGED_MOUSE_CURSOR_SHAPE) == 0) uiSettingsData.setMouseCursorShape(other.getMouseCursorShape());
         if ((mask & CHANGED_FULL_SCREEN) == 0) uiSettingsData.setFullScreen(other.isFullScreen());
 		if ((mask & CHANGED_FIT_WINDOW) == 0) uiSettingsData.setFitWindow(other.isFitWindow());
+		uiSettingsData.setViewportBackgroundColor(other.getViewportBackgroundColor());
     }
 
     public void setFullScreen(boolean isFullScreen) {
@@ -186,6 +189,14 @@ public class UiSettings {
 		return uiSettingsData.isFitWindow();
 	}
 
+	public void setViewportBackgroundColor(String viewportBackgroundColor) {
+		uiSettingsData.setViewportBackgroundColor(viewportBackgroundColor);
+	}
+
+	public String getViewportBackgroundColor() {
+        return uiSettingsData.getViewportBackgroundColor();
+    }
+
     public UiSettingsData getData() {
         return uiSettingsData;
     }
@@ -197,6 +208,7 @@ public class UiSettings {
                 ", fullScreen=" + uiSettingsData.isFullScreen() +
 				", fitWindow=" + uiSettingsData.isFitWindow() +
                 ", mouseCursorShape=" + uiSettingsData.getMouseCursorShape() +
+				", viewportBackgroundColor=" + uiSettingsData.getViewportBackgroundColor() +
                 '}';
     }
 
