@@ -4,10 +4,10 @@ CURRENT_PATH=$(CURDIR)
 BIN_PATH=$(CURDIR)/bin
 RES_PATH=$(CURDIR)/res
 TOOLS_PATH=$(CURDIR)/tools
-TIGHTVNC_JAR=$(BIN_PATH)/tightvnc-jviewer_v2.8.3.jar
+TIGHTVNC_JAR=$(BIN_PATH)/tightvnc-jviewer_v2.8.4.jar
 JDK_TAR=$(BIN_PATH)/OpenJDK8U-jre_aarch64_linux_hotspot_8u412b08.tar.gz
 DESTINATION_PATH=$(CURRENT_PATH)
-VERSION=2.8.3
+VERSION=2.8.4
 
 install:
 	@echo "install tightvnc"
