@@ -43,7 +43,7 @@ public class UiSettingsData implements Serializable {
         mouseCursorShape = LocalMouseCursorShape.DOT;
         fullScreen = false;
         fitWindow = false;
-        viewportBackgroundColor = "DARK_GRAY";
+        viewportBackgroundColor = "0x000000";
     }
 
     public UiSettingsData(double scalePercent, LocalMouseCursorShape mouseCursorShape, boolean fullScreen, boolean fitWindow, String viewportBackgroundColor) {

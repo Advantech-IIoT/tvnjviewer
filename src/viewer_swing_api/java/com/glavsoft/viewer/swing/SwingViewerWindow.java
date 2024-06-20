@@ -138,7 +138,7 @@ public class SwingViewerWindow implements IChangeSettingsListener, MouseEnteredL
 		try {
 			viewportBackgroundColor = Color.decode(uiSettings.getViewportBackgroundColor());
 		} catch (Exception e) {
-			viewportBackgroundColor = Color.DARK_GRAY;
+			viewportBackgroundColor = Color.BLACK;
 		}
 		// set viewport background color
 		scroller.getViewport().setBackground(viewportBackgroundColor);
