@@ -50,7 +50,6 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
-import java.lang.reflect.Field;
 
 public class SwingViewerWindow implements IChangeSettingsListener, MouseEnteredListener {
 	public static final int FS_SCROLLING_ACTIVE_BORDER = 20;
