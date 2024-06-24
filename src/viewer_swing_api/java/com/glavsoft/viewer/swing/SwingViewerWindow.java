@@ -77,6 +77,7 @@ public class SwingViewerWindow implements IChangeSettingsListener, MouseEnteredL
     private ProtocolSettings rfbSettings;
     private UiSettings uiSettings;
     private Protocol workingProtocol;
+	private volatile boolean isInFullscreenProcessing = false;
 
     private boolean isZoomToFitSelected;
     private List<JComponent> kbdButtons;
@@ -372,6 +373,11 @@ public class SwingViewerWindow implements IChangeSettingsListener, MouseEnteredL
     }
 
     boolean switchOnFullscreenMode() {
+		if (this.isInFullscreenProcessing) {
+			System.out.printf("switchOnFullscreenMode is running, skip\n");
+			return false;
+		}
+		this.isInFullscreenProcessing = true;
 		zoomFullScreenButton.setSelected(true);
 		oldContainerBounds = frame.getBounds();
         buttonsBar.setNoFullScreenGroupVisible(false);
@@ -382,6 +388,10 @@ public class SwingViewerWindow implements IChangeSettingsListener, MouseEnteredL
 		frame.setResizable(false);
 		frame.setVisible(true); // ?
 		try {
+			// set window fullscreen in weston
+			// but this will show the weston top tool bar
+			frame.setExtendedState(frame.getExtendedState() | frame.MAXIMIZED_BOTH);
+			// set window to real fullscreen
 			frame.getGraphicsConfiguration().getDevice().setFullScreenWindow(frame);
 			isFullScreen = true;
 			scroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
@@ -393,6 +403,7 @@ public class SwingViewerWindow implements IChangeSettingsListener, MouseEnteredL
             Logger.getLogger(this.getClass().getName()).info("Cannot switch into FullScreen mode: " + ex.getMessage());
 			return false;
 		}
+		this.isInFullscreenProcessing = false;
         return true;
 	}
 
