@@ -125,7 +125,13 @@ public class SwingViewerWindow implements IChangeSettingsListener, MouseEnteredL
 			}
 		};
 		lpane.setPreferredSize(surface.getPreferredSize());
-        lpane.add(surface, JLayeredPane.DEFAULT_LAYER, 0);
+		if (uiSettings.isFullScreen() && uiSettings.isFitWindow()) {
+            // display child component in center
+			lpane.setLayout(new GridBagLayout());
+			lpane.add(surface, new GridBagConstraints());
+        } else {
+			lpane.add(surface, JLayeredPane.DEFAULT_LAYER, 0);
+		}
         scroller = new JScrollPane();
 		// get viewport background color from string
 		Color viewportBackgroundColor;
