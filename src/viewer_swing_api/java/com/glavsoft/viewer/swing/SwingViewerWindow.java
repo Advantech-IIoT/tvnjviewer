@@ -492,8 +492,8 @@ public class SwingViewerWindow implements IChangeSettingsListener, MouseEnteredL
 	public void setButtonsBarVisibleFS(boolean isVisible) {
 		if (isVisible) {
 			if ( ! buttonsBar.isVisible) {
-				// FIXME: JLayeredPane is not compatible with GridBagLayout
-				// we need to find a way to make JLayeredPane center
+				// when program start with fullscreen + fitwindow
+				// there is no need to show buttons tool bar
 				if (fullScreenGridBagConstraints != null) {
 					System.out.printf("cannot show buttons bar, skip\n");
 					return;
