@@ -444,7 +444,7 @@ public class SwingViewerWindow implements IChangeSettingsListener, MouseEnteredL
 		Insets scrollerInsets = scroller.getInsets();
         uiSettings.zoomToFit(scrollerSize.width - scrollerInsets.left - scrollerInsets.right,
                 scrollerSize.height - scrollerInsets.top - scrollerInsets.bottom +
-                        (isFullScreen ? buttonsBar.getHeight() : 0),
+                        (isFullScreen ? 0 : buttonsBar.getHeight()),
                 workingProtocol.getFbWidth(), workingProtocol.getFbHeight());
 	}
 
