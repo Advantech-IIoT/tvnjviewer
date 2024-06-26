@@ -78,6 +78,7 @@ public class SwingViewerWindow implements IChangeSettingsListener, MouseEnteredL
     private UiSettings uiSettings;
     private Protocol workingProtocol;
 	private volatile boolean isInFullscreenProcessing = false;
+	private GridBagConstraints fullScreenGridBagConstraints= null;
 
     private boolean isZoomToFitSelected;
     private List<JComponent> kbdButtons;
@@ -126,9 +127,11 @@ public class SwingViewerWindow implements IChangeSettingsListener, MouseEnteredL
 		};
 		lpane.setPreferredSize(surface.getPreferredSize());
 		if (uiSettings.isFullScreen() && uiSettings.isFitWindow()) {
+			fullScreenGridBagConstraints = new GridBagConstraints();
+			fullScreenGridBagConstraints.anchor = GridBagConstraints.CENTER;
             // display child component in center
 			lpane.setLayout(new GridBagLayout());
-			lpane.add(surface, new GridBagConstraints());
+			lpane.add(surface, fullScreenGridBagConstraints);
         } else {
 			lpane.add(surface, JLayeredPane.DEFAULT_LAYER, 0);
 		}
@@ -489,6 +492,12 @@ public class SwingViewerWindow implements IChangeSettingsListener, MouseEnteredL
 	public void setButtonsBarVisibleFS(boolean isVisible) {
 		if (isVisible) {
 			if ( ! buttonsBar.isVisible) {
+				// FIXME: JLayeredPane is not compatible with GridBagLayout
+				// we need to find a way to make JLayeredPane center
+				if (fullScreenGridBagConstraints != null) {
+					System.out.printf("cannot show buttons bar, skip\n");
+					return;
+				}				
                 lpane.add(buttonsBar.bar, JLayeredPane.POPUP_LAYER, 0);
                 final int bbWidth = buttonsBar.bar.getPreferredSize().width;
 				buttonsBar.bar.setBounds(
