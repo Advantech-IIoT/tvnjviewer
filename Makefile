@@ -5,7 +5,7 @@ BIN_PATH=$(CURDIR)/bin
 RES_PATH=$(CURDIR)/res
 TOOLS_PATH=$(CURDIR)/tools
 TIGHTVNC_JAR=$(BIN_PATH)/tightvnc-jviewer_v2.8.4.jar
-JDK_TAR=$(BIN_PATH)/OpenJDK8U-jre_aarch64_linux_hotspot_8u442b06.tar.gz
+JDK_TAR=$(BIN_PATH)/OpenJDK8U-jre_aarch64_linux_hotspot_8u482b08.tar.gz
 DESTINATION_PATH=$(CURRENT_PATH)
 VERSION=2.8.4
 
@@ -21,8 +21,8 @@ install:
 	mkdir -p $(DESTINATION_PATH)/usr/share/common-licenses/java
 	cp ${CURRENT_PATH}/LICENSE.txt $(DESTINATION_PATH)/usr/share/common-licenses/vncviewer
 	cp ${CURRENT_PATH}/STATEMENT.txt $(DESTINATION_PATH)/usr/share/common-licenses/vncviewer
-	cp $(DESTINATION_PATH)/usr/java/jdk8u442-b06-jre/LICENSE $(DESTINATION_PATH)/usr/share/common-licenses/java
-	cp $(DESTINATION_PATH)/usr/java/jdk8u442-b06-jre/NOTICE $(DESTINATION_PATH)/usr/share/common-licenses/java
+	cp $(DESTINATION_PATH)/usr/java/jdk8u482-b08-jre/LICENSE $(DESTINATION_PATH)/usr/share/common-licenses/java
+	cp $(DESTINATION_PATH)/usr/java/jdk8u482-b08-jre/NOTICE $(DESTINATION_PATH)/usr/share/common-licenses/java
 
 create-sbom: clean-sbom
 	cd bin && sbom-tool generate -b . -bc . -pn tightvnc-jviewer -pv $(VERSION) -ps Advantech -nsb "https://github.com/Advantech-IIoT"
